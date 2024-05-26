@@ -118,9 +118,12 @@ buttonVerificar.addEventListener("click", () => {
         total_respondidas++;
         document.querySelector("#v-s").style.display = "none";
 
-        console.log("Repuesta: " + preguntas_nivelActual[dataPres[temp_memory].numero].respuesta)
+        //console.log("Repuesta: " + preguntas_nivelActual[dataPres[temp_memory].numero].respuesta)
 
-        if (data_respuesta_click != preguntas_nivelActual[dataPres[temp_memory].numero].respuesta) {
+        console.log("num temp: " + temp_memory)
+        console.log("num origen: " + total_respondidas)
+
+        if (data_respuesta_click != preguntas_nivelActual[dataPres[temp_memory].numero].respuesta && total_respondidas != 5) {
             //console.log("Mal")
             drawMSG("Repuesta Incorrecta", "white", "red")
             cantidadVida--; drawVida(cantidadVida)
