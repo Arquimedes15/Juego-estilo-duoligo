@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: ease all .5s;
+}
+
+.game-mision {
+    display: none;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: url("https://i0.wp.com/todastusfrases.com/wp-content/uploads/2019/12/Fondos-de-pantalla-de-selva-en-FullHD.jpg");
+    background-size: cover;
+
+    position: fixed;
+
+    .header-nivel {
+        background-color: greenyellow;
+        height: 10%;
+    }
+
+    .nivel {
+        height: 80%;
+
+        .option {
+            text-align: start;
+            padding: 2%;
+            border: 2px solid rgb(255, 255, 255);
+            background-color: rgb(150, 115, 39);
+            transition: ease all .5s;
+            cursor: pointer;
+            color: white;
+
+            border-radius: 15px;
+        }
+    }
+
+    #v-s {
+        display: none;
+        border: none;
+        border-radius: 10px;
+        background-color: greenyellow;
+        color: white;
+        font-size: 3vh;
+        padding: 1%;
+        cursor: pointer;
+    }
+
+    #v-s:hover{
+        background-color: white;
+        color: greenyellow;
+    }
+
+    #pista-game {
+        position: fixed;
+        bottom: 20vh;
+        right: 20%;
+        background-color: white;
+        color: black;
+        border-radius: 15px 15px 0 15px;
+        border: 2px solid black;
+        padding: 2%;
+        display: none;
+    }
+
+    .footer-nivel {
+        background-color: greenyellow;
+        height: 10%;
+    }
+}
+
+.cil {
+    border-radius: 50%;
+}
+
+button {
+    cursor: pointer;
+}
+
+.levelMap.center {
+    display: flex;
+    padding: 2%;
+    justify-content: center;
+}
+
+#mascota-guia {
+    position: fixed;
+    z-index: 11;
+    bottom: 0;
+    right: 0;
+    height: 20vh;
+    object-fit: cover;
+    cursor: pointer;
+    transition: ease all .5s;
+}
+
+#mascota-guia:hover {
+    transform: scale(1.1);
+}
+
+#msg-draw{
+    display: none;
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 2%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 250px;
+    height: 150px;
+    z-index: 11;
+    left: calc(50% - 125px);
+    font-size: 2vh;
+}

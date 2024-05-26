@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!--Select level-->
+
+    <div class="map-level">
+
+        <div class="levelMap center">
+            <button class="loadmap_katio cil" style="width: 100px; height: 100px; ">1</button>
+        </div>
+
+    </div>
+
+    <!--Game-->
+
+    <div class="game-mision">
+
+        <div class="header-nivel">
+            <div class="hud-nivel" style="display: flex; position: fixed; right: 2%; top: 2vh; align-items: center; gap: 2%;">
+                <img style="width: 5vh; height: 5vh; object-fit: cover;" src="https://d35aaqx5ub95lt.cloudfront.net/images/hearts/7631e3ee734dd4fe7792626b59457fa4.svg" alt="">
+                <p id="vidas" style="color: red; font-size: 3vh; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">3</p>
+            </div>
+            <img src="https://pngimg.com/uploads/parrot/parrot_PNG96579.png" alt="error al cargar IMG" id="mascota-guia">
+            <p id="pista-game">no se mano que poner aqui</p>
+        </div>
+
+        <div class="nivel" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 2fr 4fr 1fr;">
+            <h2 id="pregunta-html" style="border-radius: 10px; border: 5px solid black; padding: 2%; margin: 2%; background-color: white;">Hecho por @App_s1s</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(1fr ,3); gap: 2%; padding: 2%;">
+                <button class="option" id="opcion">A. </button>
+                <button class="option"  id="opcion">B. </button>
+                <button class="option"  id="opcion">C. </button>
+            </div>
+
+            <div style="display: flex; align-items: center; padding: 2%;">
+                <button id="v-s">Verificar</button>
+            </div>
+        </div>
+
+        <div class="footer-nivel"></div>
+
+    </div>
+
+    <p id="msg-draw">yo mano</p>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
