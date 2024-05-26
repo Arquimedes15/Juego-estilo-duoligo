@@ -217,7 +217,7 @@ let dataPres = [
     { numero: 4, respones: false },
 ];
 
-loadLevel(0)
+//loadLevel(0)
 
 const button_map = document.querySelectorAll(".loadmap_katio")
 
