@@ -106,52 +106,56 @@ function drawMSG(text, color, background) {
 const buttonVerificar = document.getElementById("v-s")
 
 buttonVerificar.addEventListener("click", () => {
-    console.log("Verificar: " + data_respuesta_click)
+    try {
+        console.log("Verificar: " + data_respuesta_click)
 
-    buttonOpcion.forEach(e => {
-        e.style.background = "rgb(150, 115, 39)"
-    })
+        buttonOpcion.forEach(e => {
+            e.style.background = "rgb(150, 115, 39)"
+        })
 
-    const temp_memory = total_respondidas
+        const temp_memory = total_respondidas
 
-    total_respondidas++;
-    document.querySelector("#v-s").style.display = "none";
+        total_respondidas++;
+        document.querySelector("#v-s").style.display = "none";
 
-    console.log("Repuesta: " + preguntas_nivelActual[dataPres[temp_memory].numero].respuesta)
+        console.log("Repuesta: " + preguntas_nivelActual[dataPres[temp_memory].numero].respuesta)
 
-    if (data_respuesta_click != preguntas_nivelActual[dataPres[temp_memory].numero].respuesta) {
-        //console.log("Mal")
-        drawMSG("Repuesta Incorrecta", "white", "red")
-        cantidadVida--; drawVida(cantidadVida)
+        if (data_respuesta_click != preguntas_nivelActual[dataPres[temp_memory].numero].respuesta) {
+            //console.log("Mal")
+            drawMSG("Repuesta Incorrecta", "white", "red")
+            cantidadVida--; drawVida(cantidadVida)
 
-        if (cantidadVida <= 0) {
-            //console.log("Te has quedado sin vida")
+            if (cantidadVida <= 0) {
+                //console.log("Te has quedado sin vida")
 
-            drawMSG("Te has quedado sin vidas", "white", "red")
+                drawMSG("Te has quedado sin vidas", "white", "red")
 
+                document.querySelector(".game-mision").style.display = "none"
+                inGame = false
+
+                return
+            }
+
+            drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
+            return
+        }
+
+        //console.log("Ok")
+
+        if (preguntas_nivelActual.length == total_respondidas) {
+
+            //console.log("Fin del juego")
+            drawMSG("Nivel completado", "white", "green")
             document.querySelector(".game-mision").style.display = "none"
-            inGame = false
 
             return
         }
 
+        drawMSG("Repuesta Correcta", "white", "green")
         drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
-        return
+    } catch (error) {
+        drawMSG(error, "white", "red")
     }
-
-    //console.log("Ok")
-
-    if (preguntas_nivelActual.length == total_respondidas) {
-
-        //console.log("Fin del juego")
-        drawMSG("Nivel completado", "white", "green")
-        document.querySelector(".game-mision").style.display = "none"
-
-        return
-    }
-
-    drawMSG("Repuesta Correcta", "white", "green")
-    drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
 })
 
 const buttonOpcion = document.querySelectorAll("#opcion");
