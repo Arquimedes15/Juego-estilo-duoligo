@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name</title>
-    <link rel="stylesheet" href="./style.css?v=1.1">
+    <title>Katio Engine</title>
+    <link rel="stylesheet" href="./style.css?v=1.2">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
 </head>
 
 <body>
@@ -13,10 +14,25 @@
 
     <div class="map-level">
 
+        <div class="background"></div>
+
+
         <div class="levelMap center">
+            <button class="loadmap_katio cil" style="width: 100px; height: 100px; ">2</button>
+        </div>
+
+        <div class="levelMap start">
             <button class="loadmap_katio cil" style="width: 100px; height: 100px; ">1</button>
         </div>
 
+
+        <!--Hud level-->
+
+        <div id="hud-levelmap" style="background: url('img/text_madera.jpeg');">
+            <p id="monedas">200</p>
+
+            <img src="img/carter.png" alt="carter" id="carter-hud-level">
+        </div>
     </div>
 
     <!--Game-->
@@ -52,7 +68,7 @@
 
     <p id="msg-draw">yo mano</p>
 
-    <script type="module" src="./main.js?v=1.1"></script>
+    <script type="module" src="./main.js?v=1.2"></script>
 </body>
 
 </html>

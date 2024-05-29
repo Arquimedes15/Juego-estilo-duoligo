@@ -18,21 +18,32 @@ function numeroRadom(min, max) {
 
 function loadLevel(nivel) {
 
-    document.querySelector(".game-mision").style.display = "block"
-    preguntas_nivelActual = buscarNivel(nivel)
-    total_respondidas = 0;
-    inGame = true;
+    try {
+        document.querySelector(".game-mision").style.display = "block"
+        preguntas_nivelActual = buscarNivel(nivel)
+        total_respondidas = 0;
+        inGame = true;
 
-    cantidadVida = parseInt(preguntas_nivelActual.length / 2);
-    drawVida(cantidadVida)
+        cantidadVida = parseInt(preguntas_nivelActual.length / 2);
+        drawVida(cantidadVida)
 
-    dataPres.forEach(x => {
-        x.respones = false;
-    })
+        dataPres = []
 
-    dataPres = desordenadr(dataPres)
+        for(let x = 0; x < preguntas_nivelActual.length; x++){
+            const o = {
+                numero: x, respones: false
+            }
 
-    drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
+            dataPres.push(o)
+        }
+
+        dataPres = desordenadr(dataPres)
+
+        drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
+    } catch (error) {
+        drawMSG(error, "white", "red");
+        document.querySelector(".game-mision").style.display = "none"
+    }
 
 }
 
@@ -185,7 +196,7 @@ document.querySelector("#mascota-guia").addEventListener("click", () => {
     }, 4000)
 })
 
-/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------Creacion de las preguntas de manera de dipositovo--------------------------------------------------------------------------------*/
 
 //0 = alimentacion
 //1 = habitad
@@ -206,23 +217,44 @@ let inGame = false;
 let data_respuesta_click = ""
 
 //pregunta facil
+
+//nivel 0
 preguntas.push(new Pregunta("¿De qué se alimenta pava las blanca?", "Brotes, frutos, etc.", 0, "Insectos ", "hiervas", "semillas", 0, 0))
 
-//Pregunta media 
+//Pregunta media
+
+//nivel 0
 preguntas.push(new Pregunta("¿En qué hábitat vive el shansho?", "Pantanos, ríos de la selva", 1, "Mares, lagos", "Quebradas, riachuelos", "Tropical ", 1, 0))
 preguntas.push(new Pregunta("¿cuánto mide la Punchana", "42 cm - 62 cm ", 1, "42 mt ,62 mt", "40 cm, 50 cm", "estatura", 2, 0))
 
+//nivel 1
+
+preguntas.push(new Pregunta("¿Cuál es el Estado de conservación de la taricaya?", "Esta clasificada como Vulnerable en la lista roja.", 1, "Esta en peligro medio de la lista roja.", "Las principales amenazas es su piel y su caza de sus huevos.", "Esta clasificada en una situación grave.", 2, 1))
+preguntas.push(new Pregunta("¿Cuál es el periodo de gestación del caimán?", "entre 80 y 90 días.", 1, "entre 50 y 90 días.", "entre 112 y 200 días.", "Su diferencia es de 10 días.", 2, 1))
+
 //pregunta dificil
+
+//nivel 0
 preguntas.push(new Pregunta("¿Cuál es el nombre científico de manco", " Eira bárbara", 2, "Nasua nasua", "Cebus apella", "Barbie,", 2, 0))
 preguntas.push(new Pregunta("¿Cuánto es la fecha de apareamiento del huapo?", " Octubre, mayo", 2, "Junio, agosto", "Octubre, diciembre", "Se llevan ocho meses de diferencia", 2, 0))
 
-let dataPres = [
+//nivel 1
+
+preguntas.push(new Pregunta("¿Cuáles son las principales amenazas que enfrenta la taricaya?", "las amenazas son la caza excesiva de sus huevos, la destrucción de su hábitat, entre otros.", 2, "Esta en peligro de extinción.", "Las principales amenazas son su hábitat, entre otros.", "Huevos, carne, hábitat ", 2, 1))
+preguntas.push(new Pregunta("¿Cuantos años vive la Bothriopsis?", "20 años.", 2, "10 años", "30 años", "√400", 2, 1))
+preguntas.push(new Pregunta("¿Dónde habita el Allobates?", "Se distribuye en bosques tropicales.", 2, "Se distribuye en riachuelos.", "Se distribuye en lagos.", "bosques", 1, 1))
+preguntas.push(new Pregunta("¿Cuál es el nombre científico del Shiuri?", "Tamandua tetradactyla.", 2, "Cunniculus paca.", "Nasua nasua.", "comienza con T", 2, 1))
+
+let dataPres = [] /*[
     { numero: 0, respones: false },
     { numero: 1, respones: false },
     { numero: 2, respones: false },
     { numero: 3, respones: false },
     { numero: 4, respones: false },
-];
+    { numero: 5, respones: false },
+    { numero: 6, respones: false },
+    { numero: 7, respones: false },
+];*/
 
 //loadLevel(0)
 

@@ -5,6 +5,11 @@
     transition: ease all .5s;
 }
 
+body{
+    background: url("./img/background.jpg");
+    background-size: cover;
+}
+
 .game-mision {
     display: none;
     height: 100%;
@@ -12,6 +17,7 @@
     top: 0;
     left: 0;
     z-index: 10;
+    position: relative;
     background: url("https://i0.wp.com/todastusfrases.com/wp-content/uploads/2019/12/Fondos-de-pantalla-de-selva-en-FullHD.jpg");
     background-size: cover;
 
@@ -74,16 +80,33 @@
 
 .cil {
     border-radius: 50%;
+    border: 5px solid darkorange;
 }
 
 button {
     cursor: pointer;
 }
 
+.levelMap{
+    z-index: 2;
+}
+
 .levelMap.center {
     display: flex;
     padding: 2%;
     justify-content: center;
+}
+
+.levelMap.start {
+    display: flex;
+    padding: 2% 15%;
+    justify-content: start;
+}
+
+.levelMap.end {
+    display: flex;
+    padding: 2% 4%;
+    justify-content: end;
 }
 
 #mascota-guia {
@@ -114,4 +137,56 @@ button {
     z-index: 11;
     left: calc(50% - 125px);
     font-size: 2vh;
+}
+
+.map-level{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100vh;
+
+    padding: 0 0 15vh 0;
+
+    .background{
+        position: absolute;
+        /*background: url("img/background2v2.png");
+        background-size: contain;*/
+        height: 70%;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+#hud-levelmap{
+    position: fixed;
+    bottom: 0;
+    left: 10vw;
+    height: 10vh;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    padding: 5%;
+    justify-content: start;
+    align-items: center;
+
+    width: 80vw;
+
+    #monedas{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 5vh;
+        color: white;   
+        user-select: none;
+        pointer-events: none;
+    }
+
+    #carter-hud-level{
+        position: fixed;
+        bottom: 8vh;
+        right: 10vw;
+        height: 150px;
+        object-fit: cover;
+        pointer-events: none;
+        user-select: none;
+    }
 }
