@@ -5,7 +5,7 @@
     transition: ease all .5s;
 }
 
-body{
+body {
     background: url("./img/background.jpg");
     background-size: cover;
 }
@@ -55,7 +55,7 @@ body{
         cursor: pointer;
     }
 
-    #v-s:hover{
+    #v-s:hover {
         background-color: white;
         color: greenyellow;
     }
@@ -78,17 +78,16 @@ body{
     }
 }
 
-.cil {
-    border-radius: 50%;
-    border: 5px solid darkorange;
-}
 
 button {
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
-.levelMap{
+.levelMap {
     z-index: 2;
+    background: none;
 }
 
 .levelMap.center {
@@ -124,7 +123,7 @@ button {
     transform: scale(1.1);
 }
 
-#msg-draw{
+#msg-draw {
     display: none;
     border-radius: 15px;
     border: 2px solid black;
@@ -139,7 +138,7 @@ button {
     font-size: 2vh;
 }
 
-.map-level{
+.map-level {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -147,18 +146,18 @@ button {
 
     padding: 0 0 15vh 0;
 
-    .background{
+    .background {
         position: absolute;
-        /*background: url("img/background2v2.png");
-        background-size: contain;*/
-        height: 70%;
+        background: url("img/background_2-transformed.jpeg");
+        background-size: cover;
+        height: 100%;
         width: 100%;
         bottom: 0;
         left: 0;
     }
 }
 
-#hud-levelmap{
+#hud-levelmap {
     position: fixed;
     bottom: 0;
     left: 10vw;
@@ -172,15 +171,15 @@ button {
 
     width: 80vw;
 
-    #monedas{
+    #monedas {
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 5vh;
-        color: white;   
+        color: white;
         user-select: none;
         pointer-events: none;
     }
 
-    #carter-hud-level{
+    #carter-hud-level {
         position: fixed;
         bottom: 8vh;
         right: 10vw;
@@ -189,4 +188,14 @@ button {
         pointer-events: none;
         user-select: none;
     }
+}
+
+.loadmap_katio {
+    font-size: 5vh;
+    color: white;
+    background-size: cover;
+}
+
+.loadmap_katio:hover{
+    transform: scale(1.1);
 }

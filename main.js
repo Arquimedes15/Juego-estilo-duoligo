@@ -1,3 +1,5 @@
+
+/*----------------------------Declaracion de objectos para preguntas----------------------------------*/
 class Pregunta {
     constructor(pre, res, dificultal, alt, alt2, pista, type, nivel) {
         this.dificultal = dificultal;
@@ -10,12 +12,15 @@ class Pregunta {
     }
 }
 
+
+/*---------------------------Generar numero random----------------------------------------------------*/
 function numeroRadom(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+/*-------------------------Cargar nivel-------------------------------------------------*/
 function loadLevel(nivel) {
 
     try {
@@ -47,6 +52,7 @@ function loadLevel(nivel) {
 
 }
 
+/*--------------------------Buscar nivel en el arrays-----------------------------*/
 function buscarNivel(nivel) {
     let pregunta_level = []
 
@@ -59,6 +65,7 @@ function buscarNivel(nivel) {
     return pregunta_level
 }
 
+/*--------------------------------Generar repuesta--------------------------------*/
 function genRespuesta() {
     let num = 0
 
@@ -72,10 +79,13 @@ function genRespuesta() {
 
 }
 
+/*---------------------------Dibujar vida en el DOM---------------------------------*/
 function drawVida(vida) {
     document.querySelector("#vidas").innerHTML = vida;
 }
 
+
+/*--------------------------Desordenar-----------------------------------------------*/
 function desordenadr(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -84,6 +94,7 @@ function desordenadr(array) {
     return array;
 }
 
+/*-------------------------dibujar pregustas en el dom------------------------------------*/
 function drawPress(press) {
     document.querySelector("#pregunta-html").innerHTML = press.pregunta
     const button_r = document.querySelectorAll("#opcion")
@@ -101,6 +112,8 @@ function drawPress(press) {
     }
 }
 
+/* -----------------------------Mostrar Mensaje de error otro motivo----------------------*/
+
 function drawMSG(text, color, background) {
     const msg = document.querySelector("#msg-draw")
 
@@ -114,6 +127,7 @@ function drawMSG(text, color, background) {
     }, 2000)
 }
 
+/*-----------------------------------Boton que va verifivar si la repuesta es correcta------------------*/
 const buttonVerificar = document.getElementById("v-s")
 
 buttonVerificar.addEventListener("click", () => {
@@ -245,6 +259,8 @@ preguntas.push(new Pregunta("¿Cuantos años vive la Bothriopsis?", "20 años.",
 preguntas.push(new Pregunta("¿Dónde habita el Allobates?", "Se distribuye en bosques tropicales.", 2, "Se distribuye en riachuelos.", "Se distribuye en lagos.", "bosques", 1, 1))
 preguntas.push(new Pregunta("¿Cuál es el nombre científico del Shiuri?", "Tamandua tetradactyla.", 2, "Cunniculus paca.", "Nasua nasua.", "comienza con T", 2, 1))
 
+/*----------------Temp data------------------------------*/
+
 let dataPres = [] /*[
     { numero: 0, respones: false },
     { numero: 1, respones: false },
@@ -258,6 +274,8 @@ let dataPres = [] /*[
 
 //loadLevel(0)
 
+/*---------------------------------------------Inicio del juego------------------------------------------------------------*/
+
 const button_map = document.querySelectorAll(".loadmap_katio")
 
 button_map.forEach(e => {
@@ -266,3 +284,21 @@ button_map.forEach(e => {
         loadLevel(num - 1)
     })
 })
+
+/*--------------------------------------Katio engine------------------------------------------------------*/
+
+/* 
+--------------------------------------------------------------------------------------------------------------
+|    Creador: Arquimedes                                                                                     |
+|                                                                                                            |
+|    Redes:                                                                                                  |
+|        -Telegram @app_s1s                                                                                  |
+|        -instagram @app_s1s                                                                                 |
+|                                                                                                            |
+|    notas del creador: En este proyecto cometi muchos crimenes de progracion pero se que no van a pagar     |
+|    lo sufuciente para hacelo bien solo demore 2 Horas y soy malo para hacer Style                          |
+|                                                                                                            |
+|    postdata: mi español es malo confundo la r con la l y eso que de nacimiento soy peruano a fin no me     |
+|    dedico aser app para vivir yo soy de otro tema asi que creo que me salve                                |
+|-------------------------------------------------------------------------------------------------------------
+*/
