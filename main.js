@@ -47,6 +47,7 @@ function loadLevel(nivel) {
         drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
     } catch (error) {
         drawMSG(error, "white", "red");
+        drawFinalScreem("Error del juego", "red", true);
         document.querySelector(".game-mision").style.display = "none"
     }
 
@@ -127,6 +128,26 @@ function drawMSG(text, color, background) {
     }, 2000)
 }
 
+/*------------------------------------------Mostrar Pantalla final--------------------------------------*/
+
+function drawFinalScreem(text, color, mostrar){
+    const pantall = document.querySelector("#result-level")
+    
+    pantall.innerHTML = text
+    pantall.style.color = color
+
+    if(mostrar){
+        pantall.style.left = "0%"
+
+        const time_fuera = setTimeout(()=>{
+            pantall.style.left = "-100%"
+        }, 2000)
+        return
+    }
+
+    pantall.style.left = "-100%"
+}
+
 /*-----------------------------------Boton que va verifivar si la repuesta es correcta------------------*/
 const buttonVerificar = document.getElementById("v-s")
 
@@ -156,7 +177,8 @@ buttonVerificar.addEventListener("click", () => {
             if (cantidadVida <= 0) {
                 //console.log("Te has quedado sin vida")
 
-                drawMSG("Te has quedado sin vidas", "white", "red")
+                //drawMSG("Te has quedado sin vidas", "white", "red")
+                drawFinalScreem("Te has quedado sin vidas", "red", true);
 
                 document.querySelector(".game-mision").style.display = "none"
                 inGame = false
@@ -173,7 +195,8 @@ buttonVerificar.addEventListener("click", () => {
         if (preguntas_nivelActual.length == total_respondidas) {
 
             //console.log("Fin del juego")
-            drawMSG("Nivel completado", "white", "green")
+            //drawMSG("Nivel completado", "white", "green")
+            drawFinalScreem("Nivel completado", "green", true);
             document.querySelector(".game-mision").style.display = "none"
 
             return
@@ -181,8 +204,13 @@ buttonVerificar.addEventListener("click", () => {
 
         drawMSG("Repuesta Correcta", "white", "green")
         drawPress(preguntas_nivelActual[dataPres[total_respondidas].numero])
+
     } catch (error) {
         drawMSG(error, "white", "red")
+        drawFinalScreem("<center>Error del juego<br/>Reiniciado en 3 segundos</center>", "red", true);
+        const time_fuera = setTimeout(()=>{
+            location.reload();
+        }, 3000)
     }
 })
 
@@ -233,7 +261,13 @@ let data_respuesta_click = ""
 //pregunta facil
 
 //nivel 0
+
 preguntas.push(new Pregunta("¿De qué se alimenta pava las blanca?", "Brotes, frutos, etc.", 0, "Insectos ", "hiervas", "semillas", 0, 0))
+
+//nivel 3
+
+preguntas.push(new Pregunta("¿de que se alimenta el añuje?", "frutas,flores silvestres y pequeños vertebrados", 0, "insectos pequeños y hojas.", "hojas y semillas.", "frutas", 0, 3))
+preguntas.push(new Pregunta("¿De qué otro nombre se le conoce al Maquisapa?", "Mono araña.", 0, "Coto", "Machín negro", "insecto de 8 patas", 2, 3))
 
 //Pregunta media
 
@@ -246,9 +280,22 @@ preguntas.push(new Pregunta("¿cuánto mide la Punchana", "42 cm - 62 cm ", 1, "
 preguntas.push(new Pregunta("¿Cuál es el Estado de conservación de la taricaya?", "Esta clasificada como Vulnerable en la lista roja.", 1, "Esta en peligro medio de la lista roja.", "Las principales amenazas es su piel y su caza de sus huevos.", "Esta clasificada en una situación grave.", 2, 1))
 preguntas.push(new Pregunta("¿Cuál es el periodo de gestación del caimán?", "entre 80 y 90 días.", 1, "entre 50 y 90 días.", "entre 112 y 200 días.", "Su diferencia es de 10 días.", 2, 1))
 
+//nivel 2
+
+preguntas.push(new Pregunta("¿Cuanto pesa un ronsoco adulto?", "35 – 66 kg", 1, "20-40kg", "70-90kg", "Se llevan 31kg de diferencia ", 2, 2))
+preguntas.push(new Pregunta("¿Cuántas crías tiene el Yaguarundi?", "De 1 - 4 crías ", 1, "De 1 - 2 crías", "De 1- 6 crías", "16÷4", 2, 2))
+preguntas.push(new Pregunta("¿Cuántos años vive un oso hormiguero?", "Puede vivir hasta los 14 años.", 1, "Puede vivir hasta los 10 años.", "Puede vivir hasta los 29 años.", "7x2", 2, 2))
+
+//nivel 3
+
+preguntas.push(new Pregunta("¿Cuánto tiempo puede vivir el gallito de las rocas?", "puede vivir hasta 30 años en cautiverio.", 1, "peude vivir hasta 15 años en cautiverio.", "puede vivir hasta 20 años en cautiverio.", "15x2", 2, 3))
+preguntas.push(new Pregunta("¿De qué se alimenta el Machetero?", "De tallos tiernos, hojas, frutos y semillas.", 1, "Insectos pequeños", "Carne y Insectos pequeño", "Consume plantas", 0, 3))
+preguntas.push(new Pregunta("¿cual es el nombre científico del achuni?", "Nasua nasua", 1, "Ateles chamek", "Podocnemis unifilis", "comienza con N", 2, 3))
+
 //pregunta dificil
 
 //nivel 0
+
 preguntas.push(new Pregunta("¿Cuál es el nombre científico de manco", " Eira bárbara", 2, "Nasua nasua", "Cebus apella", "Barbie,", 2, 0))
 preguntas.push(new Pregunta("¿Cuánto es la fecha de apareamiento del huapo?", " Octubre, mayo", 2, "Junio, agosto", "Octubre, diciembre", "Se llevan ocho meses de diferencia", 2, 0))
 
@@ -258,6 +305,11 @@ preguntas.push(new Pregunta("¿Cuáles son las principales amenazas que enfrenta
 preguntas.push(new Pregunta("¿Cuantos años vive la Bothriopsis?", "20 años.", 2, "10 años", "30 años", "√400", 2, 1))
 preguntas.push(new Pregunta("¿Dónde habita el Allobates?", "Se distribuye en bosques tropicales.", 2, "Se distribuye en riachuelos.", "Se distribuye en lagos.", "bosques", 1, 1))
 preguntas.push(new Pregunta("¿Cuál es el nombre científico del Shiuri?", "Tamandua tetradactyla.", 2, "Cunniculus paca.", "Nasua nasua.", "comienza con T", 2, 1))
+
+//nivel 2
+
+preguntas.push(new Pregunta("¿Qué clase es el tigrillo?", "mammalia", 2, "Amphibia", "Sauropsida", "Empieza con M", 2, 2))
+preguntas.push(new Pregunta("¿cuantos huevos pone la charapa?", "charapa pequeña:10 a 35 huevos/ charapa grande :60 a 140 huevos", 2, "charapa pequeña: 20 a 30 huevos./ charapa grande: 80 a 120 huevos.", "charapa pequeña: 10 a 50 huevos./ charapa grande: 50 a 100 huevos.", "charapa pequeñ: 25 de diferencia/ charapa grande: 80 de diferencia.", 2, 2))
 
 /*----------------Temp data------------------------------*/
 
@@ -277,15 +329,32 @@ let dataPres = [] /*[
 /*---------------------------------------------Inicio del juego------------------------------------------------------------*/
 
 const button_map = document.querySelectorAll(".loadmap_katio")
+const info_level = document.querySelector("#info-level")
 
 button_map.forEach(e => {
     e.addEventListener("click", () => {
         let num = parseInt(e.innerHTML)
-        loadLevel(num - 1)
+        
+        const time_fuera = setTimeout(()=>{
+            loadLevel(num - 1)
+        }, 600)
+        info_level.style.left = "0"
+        info_level.querySelector("h2").innerHTML = `Nivel ${num}`
     })
 })
 
-/*--------------------------------------Katio engine------------------------------------------------------*/
+info_level.querySelector(".salir").addEventListener("click", ()=>{
+    document.querySelector(".game-mision").style.display = "none"
+    info_level.style.left = "-100%"
+})
+
+info_level.querySelector(".iniciar").addEventListener("click", ()=>{
+    info_level.style.left = "-100%"
+})
+
+/*----------------------------------------Katio engine------------------------------------------------------*/
+
+/*Nada de katio engine*/
 
 /* 
 --------------------------------------------------------------------------------------------------------------
@@ -298,7 +367,12 @@ button_map.forEach(e => {
 |    notas del creador: En este proyecto cometi muchos crimenes de progracion pero se que no van a pagar     |
 |    lo sufuciente para hacelo bien solo demore 2 Horas y soy malo para hacer Style                          |
 |                                                                                                            |
-|    postdata: mi español es malo confundo la r con la l y eso que de nacimiento soy peruano a fin no me     |
+|    postdata: mi español es malo confundo la r con la l y eso que soy peruano a fin no me                   |
 |    dedico aser app para vivir yo soy de otro tema asi que creo que me salve                                |
 |-------------------------------------------------------------------------------------------------------------
 */
+
+
+window.addEventListener("load", ()=>{
+    document.querySelector("#loader").style.top = "-100%";
+})
