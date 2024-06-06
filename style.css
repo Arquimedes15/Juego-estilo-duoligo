@@ -265,3 +265,14 @@ button {
     font-size: 5vh;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+#pregunta-html{
+    display: flex;
+    justify-content: space-between;
+
+    & img {
+        border-radius: 15%;
+        width: 20%;
+        object-fit: cover;
+    }
+}
